@@ -19,11 +19,12 @@ extends Control
 
 ## Initialize the label
 func _ready() -> void:
+	visible = true
 	update_label_text()
 	HandlerCorn.ref.corn_created.connect(update_label_text)
 	HandlerCorn.ref.corn_consumed.connect(update_label_text)
 	user_interface.navigation_requested.connect(_on_navigation_request)
-	visible = false
+
 
 
 ## Creates corn and store it

@@ -1,16 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://7kicu8uvbxon"]
+[gd_scene load_steps=2 format=3 uid="uid://c82wwfaqimt1k"]
 
-[ext_resource type="Script" path="res://scenes/prototypes/prototype_clicker.gd" id="1_ufo5t"]
+[ext_resource type="Script" path="res://scenes/prototypes/generator/prototype_generator.gd" id="1_b5cjo"]
 
-[node name="PrototypeClicker" type="Control" node_paths=PackedStringArray("label")]
+[node name="PrototypeGenerator" type="Control" node_paths=PackedStringArray("label", "button", "timer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ufo5t")
+script = ExtResource("1_b5cjo")
 label = NodePath("Label")
+button = NodePath("Button")
+timer = NodePath("Timer")
 
 [node name="Label" type="Label" parent="."]
 custom_minimum_size = Vector2(2.08165e-12, 80)
@@ -20,7 +22,7 @@ anchor_right = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
 theme_type_variation = &"HeaderLarge"
-text = "Corn Harvested: 0"
+text = "Corn : <no_value>"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -32,12 +34,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = -40.0
-offset_right = 160.0
-offset_bottom = 40.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Harvest Corn"
+text = "Start Harvesting Corn"
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

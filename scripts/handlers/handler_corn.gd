@@ -43,5 +43,3 @@ func consume_corn(quantity: int) -> Error:
 	corn_consumed.emit(quantity)
 
 	return Error.OK
-
-

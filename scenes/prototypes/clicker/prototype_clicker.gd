@@ -13,17 +13,19 @@ extends Control
 
 ## Called when ready, and initializes the label
 func _ready() -> void:
-
+	visible = false
 	HandlerCorn.ref.corn_created.connect(update_label_text)
 	HandlerCorn.ref.corn_consumed.connect(update_label_text)
 	user_interface.navigation_requested.connect(_on_navigation_request)
-	visible = false
+
+
+
 	update_label_text()
 
 
 ## Creates a harvested unit of corn and triggers an update
 func harvest_corn() -> void:
-	HandlerCorn.ref.create_corn(1)
+	HandlerCorn.ref.create_corn(1 + Game.ref.data.up_01_level)
 
 
 ## Updates the label text with the amount of corn harvested

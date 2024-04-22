@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdaoemov6wyro"]
+[gd_scene load_steps=6 format=3 uid="uid://bdaoemov6wyro"]
 
-[ext_resource type="PackedScene" uid="uid://c82wwfaqimt1k" path="res://scenes/prototypes/prototype_generator.tscn" id="1_jhdvf"]
-[ext_resource type="Script" path="res://scenes/prototypes/user_interface.gd" id="1_wl6ro"]
-[ext_resource type="PackedScene" uid="uid://7kicu8uvbxon" path="res://scenes/prototypes/prototype_clicker.tscn" id="2_1h1rw"]
-[ext_resource type="Script" path="res://scenes/prototypes/label_corn.gd" id="2_owjha"]
+[ext_resource type="PackedScene" uid="uid://c82wwfaqimt1k" path="res://scenes/prototypes/generator/prototype_generator.tscn" id="1_jhdvf"]
+[ext_resource type="Script" path="res://scenes/user_interface/user_interface.gd" id="1_wl6ro"]
+[ext_resource type="PackedScene" uid="uid://7kicu8uvbxon" path="res://scenes/prototypes/clicker/prototype_clicker.tscn" id="2_1h1rw"]
+[ext_resource type="Script" path="res://scenes/user_interface/label_corn.gd" id="2_hk6hh"]
+[ext_resource type="PackedScene" uid="uid://d3786wlgyab4o" path="res://scenes/prototypes/upgrades/prototype_upgrades.tscn" id="5_07hx2"]
 
 [node name="UserInterface" type="Control"]
 layout_mode = 3
@@ -56,6 +57,10 @@ text = "Prototype Generator"
 layout_mode = 2
 text = "Prototype Clicker"
 
+[node name="PrototypeUpgradesLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Prototype Upgrades"
+
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/LeftPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
@@ -81,7 +86,7 @@ layout_mode = 2
 [node name="CornLabel" type="Label" parent="HBoxContainer/LeftPanel/VBoxContainer/Resources/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Corn : 15"
-script = ExtResource("2_owjha")
+script = ExtResource("2_hk6hh")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
@@ -106,5 +111,11 @@ view = 1
 layout_mode = 1
 user_interface = NodePath("../../..")
 
+[node name="PrototypeUpgrades" parent="HBoxContainer/MainView" node_paths=PackedStringArray("user_interface") instance=ExtResource("5_07hx2")]
+visible = false
+layout_mode = 1
+user_interface = NodePath("../../..")
+
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeGeneratorLink" to="." method="_on_prototype_generator_link_pressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeClickerLink" to="." method="_on_prototype_clicker_link_pressed"]
+[connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeUpgradesLink" to="." method="_on_prototype_upgrades_link_pressed"]
