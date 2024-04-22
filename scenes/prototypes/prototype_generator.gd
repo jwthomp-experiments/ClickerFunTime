@@ -20,24 +20,20 @@ extends Control
 ## Initialize the label
 func _ready() -> void:
 	update_label_text()
-
+	HandlerCorn.ref.corn_created.connect(update_label_text)
+	HandlerCorn.ref.corn_consumed.connect(update_label_text)
 	user_interface.navigation_requested.connect(_on_navigation_request)
-
 	visible = false
-
-
-func _process(_delta: float) -> void:
-	update_label_text()
 
 
 ## Creates corn and store it
 func create_corn() -> void:
-	Game.ref.data.corn += 1
+	HandlerCorn.ref.create_corn(1)
 
 
 ## Updates the label text to match the current amount of corn in storage
-func update_label_text() -> void:
-	label.text = "Corn : %s" %Game.ref.data.corn
+func update_label_text(_quantity: int = -1) -> void:
+	label.text = "Corn : %s" %HandlerCorn.ref.corn()
 
 
 ## Start the timer and disable the start timer button
