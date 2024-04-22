@@ -1,5 +1,5 @@
 class_name PrototypeGenerator
-extends Control
+extends View
 ## Generator prototype creating corn every second
 
 ## Reference to the label displaying the amount of corn in storage
@@ -11,19 +11,14 @@ extends Control
 ## Reference to the timer that fires every second to generate cord
 @export var timer : Timer
 
-## Reference to the user interface.
-@export var user_interface : UserInterface
-## View reference.
-@export var view : UserInterface.Views
-
 
 ## Initialize the label
 func _ready() -> void:
+	super()
 	visible = true
 	update_label_text()
 	HandlerCorn.ref.corn_created.connect(update_label_text)
 	HandlerCorn.ref.corn_consumed.connect(update_label_text)
-	user_interface.navigation_requested.connect(_on_navigation_request)
 
 
 
@@ -51,11 +46,3 @@ func _on_button_pressed() -> void:
 ## Triggered when the timer times out
 func _on_timer_timeout() -> void:
 	create_corn()
-
-
-## Handle Navigation Request Signal
-func _on_navigation_request(requested_view : UserInterface.Views) -> void:
-	if requested_view == view:
-		visible = true
-	else:
-		visible = false
