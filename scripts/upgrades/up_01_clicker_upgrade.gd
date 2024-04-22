@@ -1,21 +1,11 @@
 class_name Up01ClickerUpgrade
-extends Node
+extends Upgrade
 ## Upgrade 01 - Increases corn created by the clicker
-
-## Level of the upgrade
-
-## Text for the Title label, which is the name of the upgrade
-var title : String = "Clicker Upgrade"
-## The base cost of the upgrade which is used to calculate the cost / level
-var base_cost : int = 5
-## Current cost to upgrade
-var cost : int
-
-## Emitted when the upgrade is leveled up
-signal leveled_up
 
 
 func _init() -> void:
+	title = "Clicker Upgrade"
+	base_cost = 5
 	calculate_cost()
 
 ## Returns the current level for this upgrade

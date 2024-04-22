@@ -10,7 +10,7 @@ extends Control
 @export var purchase_button : Button
 
 ## Upgrade to display in this component
-var upgrade : Up01ClickerUpgrade
+var upgrade : Upgrade
 
 
 func _ready() -> void:
