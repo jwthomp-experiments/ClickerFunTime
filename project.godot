@@ -11,13 +11,21 @@ config_version=5
 [application]
 
 config/name="ClickerFunTime"
-run/main_scene="res://scenes/prototype_clicker.tscn"
+run/main_scene="res://scenes/game/game.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [dotnet]
 
 project/assembly_name="ClickerFunTime"
+
+[editor]
+
+version_control/autoload_on_startup=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/nklbdev.aseprite_importers/plugin.cfg")
 
 [file_customization]
 
