@@ -4,7 +4,6 @@ on: push
 env:
   GODOT_VERSION: 4.2.1
   EXPORT_NAME: ClickerFunTime
-  PROJECT_PATH: ClickerFunTime
 
 jobs:
   export-linux:
